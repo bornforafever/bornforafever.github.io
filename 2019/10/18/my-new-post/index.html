@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="我的第一篇博客文章在这里用一个示例示范如何使用database/sql接口对数据库进行增删盖查操作代码部分如下package mainimport (    _”github.com/Go-SQL-Drive/MySQL”    “database/sql”    “fmt”    //“time”) func main(){    db, err := sql.Open(“mysql”, “Ri">
+<meta name="description" content="#我的第一篇博客文章 #在这里用一个示例示范golang如何使用database/sql接口对数据库进行增删盖查操作 #代码部分如下 package main  import ( _&amp;quot;github.com/Go-SQL-Drive/MySQL&amp;quot; &amp;quot;database/sql&amp;quot; &amp;quot;fmt&amp;quot; //&amp;quot;time&amp;quot; )  func">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my_new_post">
+<meta property="og:title" content="golang连接MYSQL进行增删改查操作">
 <meta property="og:url" content="https://bornforafever.github.io/2019/10/18/my-new-post/index.html">
 <meta property="og:site_name" content="欢迎大家一同学习交流技术">
-<meta property="og:description" content="我的第一篇博客文章在这里用一个示例示范如何使用database/sql接口对数据库进行增删盖查操作代码部分如下package mainimport (    _”github.com/Go-SQL-Drive/MySQL”    “database/sql”    “fmt”    //“time”) func main(){    db, err := sql.Open(“mysql”, “Ri">
+<meta property="og:description" content="#我的第一篇博客文章 #在这里用一个示例示范golang如何使用database/sql接口对数据库进行增删盖查操作 #代码部分如下 package main  import ( _&amp;quot;github.com/Go-SQL-Drive/MySQL&amp;quot; &amp;quot;database/sql&amp;quot; &amp;quot;fmt&amp;quot; //&amp;quot;time&amp;quot; )  func">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-19T08:49:39.262Z">
+<meta property="og:updated_time" content="2019-10-19T09:05:38.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my_new_post">
-<meta name="twitter:description" content="我的第一篇博客文章在这里用一个示例示范如何使用database/sql接口对数据库进行增删盖查操作代码部分如下package mainimport (    _”github.com/Go-SQL-Drive/MySQL”    “database/sql”    “fmt”    //“time”) func main(){    db, err := sql.Open(“mysql”, “Ri">
+<meta name="twitter:title" content="golang连接MYSQL进行增删改查操作">
+<meta name="twitter:description" content="#我的第一篇博客文章 #在这里用一个示例示范golang如何使用database/sql接口对数据库进行增删盖查操作 #代码部分如下 package main  import ( _&amp;quot;github.com/Go-SQL-Drive/MySQL&amp;quot; &amp;quot;database/sql&amp;quot; &amp;quot;fmt&amp;quot; //&amp;quot;time&amp;quot; )  func">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>my_new_post | 欢迎大家一同学习交流技术</title>
+  <title>golang连接MYSQL进行增删改查操作 | 欢迎大家一同学习交流技术</title>
   
 
 
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">my_new_post</h1>
+          <h1 class="post-title" itemprop="name headline">golang连接MYSQL进行增删改查操作</h1>
         
 
         <div class="post-meta">
@@ -299,15 +299,30 @@
       
 
       
-        <p>我的第一篇博客文章<br>在这里用一个示例示范如何使用database/sql接口对数据库进行增删盖查操作<br>代码部分如下<br>package main<br>import (<br>    _”github.com/Go-SQL-Drive/MySQL”<br>    “database/sql”<br>    “fmt”<br>    //“time”<br>)</p>
-<p>func main(){<br>    db, err := sql.Open(“mysql”, “Richar_Chao:Richar_Chao@/test?charset=utf8”)  //数据库名及密码（以我自己的为例）<br>    checkErr(err)<br>    // 开始插入数据<br>    stmt, err := db.Prepare(“INSERT userinfo SET usename=?, departname=?,created=?”)<br>    checkErr(err)</p>
-<pre><code>res, err := stmt.Exec(&quot;Richar_Chao&quot;, &quot;研发部门&quot;, &quot;2019-10-19&quot;)
+        <p>#我的第一篇博客文章</p>
+<p>#在这里用一个示例示范golang如何使用database/sql接口对数据库进行增删盖查操作</p>
+<p>#代码部分如下</p>
+<pre><code>package main
+
+import (
+_&quot;github.com/Go-SQL-Drive/MySQL&quot;
+&quot;database/sql&quot;
+&quot;fmt&quot;
+//&quot;time&quot;
+)
+
+func main(){
+db, err := sql.Open(&quot;mysql&quot;, &quot;Richar_Chao:Richar_Chao@/test?charset=utf8&quot;)  //数据库名及密码（以我自己的为例）
+checkErr(err)
+// 开始插入数据
+stmt, err := db.Prepare(&quot;INSERT userinfo SET usename=?, departname=?,created=?&quot;)
 checkErr(err)
 
+res, err := stmt.Exec(&quot;Richar_Chao&quot;, &quot;研发部门&quot;, &quot;2019-10-19&quot;)
+checkErr(err)
 id, err := res.LastInsertId()
 checkErr(err)
 fmt.Println(id)
-
 //更新数据
 stmt, err := db.Prepare(&quot;update userinfo set usename=?, where uid=?&quot;)
 checkErr(err)
@@ -352,10 +367,14 @@ checkErr(err)
 fmt.Println(affect)
 
 db.Close()
-</code></pre><p>}</p>
-<p>func checkErr(err error){<br>    if err != nil{<br>    panic(err)<br>}</p>
-<p>}</p>
-<p>通过上面的代码，可以看出实际上golang操纵MYAQL数据库还是很方便的，主要是有驱动的支持。</p>
+}
+
+func checkErr(err error){
+if err != nil{
+panic(err)
+}
+}
+</code></pre><p>#通过上面的代码，可以看出实际上golang操纵MYSQL数据库还是很方便的，主要是有驱动的支持。</p>
 
       
     </div>
@@ -376,22 +395,6 @@ db.Close()
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/02/10/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -456,7 +459,7 @@ db.Close()
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
