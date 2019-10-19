@@ -229,6 +229,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://bornforafever.github.io/2019/10/18/my-new-post/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Richar-Chao（薛定谔的猫）">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="欢迎大家一同学习交流技术">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/18/my-new-post/" itemprop="url">my_new_post</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-18T21:26:57+08:00">
+                2019-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我的第一篇博客文章<br>在这里用一个示例示范如何使用database/sql接口对数据库进行增删盖查操作<br>代码部分如下<br>package main<br>import (<br>    _”github.com/Go-SQL-Drive/MySQL”<br>    “database/sql”<br>    “fmt”<br>    //“time”<br>)</p>
+<p>func main(){<br>    db, err := sql.Open(“mysql”, “Richar_Chao:Richar_Chao@/test?charset=utf8”)  //数据库名及密码（以我自己的为例）<br>    checkErr(err)<br>    // 开始插入数据<br>    stmt, err := db.Prepare(“INSERT userinfo SET usename=?, departname=?,created=?”)<br>    checkErr(err)</p>
+<pre><code>res, err := stmt.Exec(&quot;Richar_Chao&quot;, &quot;研发部门&quot;, &quot;2019-10-19&quot;)
+checkErr(err)
+
+id, err := res.LastInsertId()
+checkErr(err)
+fmt.Println(id)
+
+//更新数据
+stmt, err := db.Prepare(&quot;update userinfo set usename=?, where uid=?&quot;)
+checkErr(err)
+
+res , err := stmt.Exec(&quot;Richar_Chaoupdate&quot;, id)
+checkErr(err)
+
+affect, err := res.RowsAffected()
+checkErr(err)
+
+fmt.Println(affect)
+
+//查询数据
+rows, err := db.Query(&quot;SELECT * FROM useinfo&quot;)
+checkErr(err)
+
+for rows.Next(){
+    var uid int
+    var username string
+    var department string
+    var created string
+    err = rows.Scan(&amp;uid, &amp;username, &amp;department, &amp;created)
+    checkErr(err)
+    fmt.Println(uid)
+    fmt.Println(username)
+    fmt.Println(department)
+    fmt.Println(created)
+
+}
+
+//删除数据
+
+stmt, err := db.Prepare(&quot;delete from userinfo  where uid=?&quot;)
+checkErr(err)
+
+res, err := stmt.Exec(id)
+checkErr(err)
+
+afect, err := res.RowsAffected()
+checkErr(err)
+
+fmt.Println(affect)
+
+db.Close()
+</code></pre><p>}</p>
+<p>func checkErr(err error){<br>    if err != nil{<br>    panic(err)<br>}</p>
+<p>}</p>
+<p>通过上面的代码，可以看出实际上golang操纵MYAQL数据库还是很方便的，主要是有驱动的支持。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://bornforafever.github.io/2019/02/10/hello-world/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -390,7 +566,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
